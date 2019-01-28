@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/wishes")
+@RequestMapping("/wishlist")
 public class WishesController {
     @GetMapping
     public String getAll() {
-        return "wishlist";
+        return "wishes";
     }
 }
