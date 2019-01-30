@@ -2,8 +2,8 @@ package ru.itpark.wishlist.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import ru.itpark.wishlist.domain.Wish;
 import ru.itpark.wishlist.service.WishesService;
 
 @Controller
@@ -21,4 +21,32 @@ public class WishesController {
 
         return "wishlist";
     }
+
+    @GetMapping ("/add")
+    public String addForm() {
+        return "wish-add";
+    }
+
+    @PostMapping("/add")
+    public String add(@ModelAttribute Wish wish) {
+        wishesService.add(wish);
+
+        return "redirect:/wishlist";
+    }
+
+
+    @GetMapping ("/{id}")
+    public String get(@PathVariable int id, Model model) {
+        model.addAttribute("wish", wishesService.findById (id));
+
+        return "wish";
+    }
+
+    @PostMapping("{id}/remove")
+    public String remove(@PathVariable int id) {
+        wishesService.removeById(id);
+
+        return "redirect:/wishlist";
+    }
+
 }

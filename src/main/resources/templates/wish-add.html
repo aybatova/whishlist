@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head data-th-replace="fragments/layout :: headFragment(title='Add Wish')"></head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>Добавить желание</h1>
+            <form data-th-action="@{/wishlist/add}" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Введите наименование" id="name" name="name" type="text" class="validate"
+                           required>
+                    <label for="name">Наименование</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="content" name ="content" class="materialize-textarea" required></textarea>
+                    <label for="content">Описание</label>
+                </div>
+            </div>
+                <button class="waves-effect waves-light btn" type="submit">Добавить</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
+</body>
+</html>

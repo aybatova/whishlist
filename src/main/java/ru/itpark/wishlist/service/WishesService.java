@@ -19,4 +19,16 @@ public class WishesService {
         return wishesRepository.findAll();
 
     }
+
+    public Wish findById(int id) {
+        return wishesRepository.findById(id);
+    }
+
+    public void removeById(int id) {
+        wishesRepository.removeById(id);
+    }
+
+    public void add(Wish wish) {
+        wishesRepository.add (wish);
+    }
 }
