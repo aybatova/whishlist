@@ -18,7 +18,6 @@ public class WishesController {
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("wishlist", wishesService.findAll());
-
         return "wishlist";
     }
 
@@ -38,7 +37,6 @@ public class WishesController {
     @GetMapping ("/{id}")
     public String get(@PathVariable int id, Model model) {
         model.addAttribute("wish", wishesService.findById (id));
-
         return "wish";
     }
 
@@ -47,6 +45,20 @@ public class WishesController {
         wishesService.removeById(id);
 
         return "redirect:/wishlist";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id) {
+        return "wish-edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String edit(
+            @PathVariable int id,
+            @ModelAttribute Wish wish
+    ) {
+        wishesService.save(wish);
+        return "wish-edit";
     }
 
 }

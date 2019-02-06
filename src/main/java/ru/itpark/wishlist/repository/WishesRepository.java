@@ -53,4 +53,12 @@ public class WishesRepository {
                 Map.of("name", wish.getName(), "content", wish.getContent())
         );
     }
+
+    public void save(Wish wish) {
+        if (wish.getId() == 0) {
+            jdbcTemplate.update("UPDATE wishlist SET name =:name, content= :content",
+                    Map.of("name", wish.getName(), "content", wish.getContent())
+            );
+        }
+    }
 }
