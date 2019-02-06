@@ -55,10 +55,8 @@ public class WishesRepository {
     }
 
     public void save(Wish wish) {
-        if (wish.getId() == 0) {
-            jdbcTemplate.update("UPDATE wishlist SET name =:name, content= :content",
-                    Map.of("name", wish.getName(), "content", wish.getContent())
-            );
-        }
+        jdbcTemplate.update("UPDATE wishlist SET name = :name, content= :content WHERE id = :id",
+                Map.of("id", wish.getId(), "name", wish.getName(), "content", wish.getContent())
+        );
     }
 }

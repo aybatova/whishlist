@@ -14,7 +14,7 @@
                     <form data-th-action="@{/wishlist/{id}/remove(id=${wish.id})}" method="post">
                         <button class="waves-effect waves-light btn" type="submit">Remove</button>
                     </form> <br>
-                    <form data-th-action="@{/wishlist/{id}/edit(id=${wish.id})}" method="post">
+                    <form data-th-action="@{/wishlist/{id}/edit(id=${wish.id})}" method="get">
                         <button class="waves-effect waves-light btn" type="submit">Edit</button>
                     </form>
                 </div>

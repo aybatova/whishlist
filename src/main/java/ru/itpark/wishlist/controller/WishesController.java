@@ -58,7 +58,7 @@ public class WishesController {
             @ModelAttribute Wish wish
     ) {
         wishesService.save(wish);
-        return "wish-edit";
+        return "redirect:/wishlist";
     }
 
 }
